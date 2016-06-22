@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Add Item";
+}
+<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">				
+    <form method="post" action="~/Admin/AddItem1" enctype="multipart/form-data">
+        <div>
+            @Html.Label("Image 1")
+            <input type="file" name="file1" id="file1">
+        </div>
+        <div>
+            @Html.Label("Image 2")
+            <input type="file" name="file2" id="file2">
+        </div>
+        <div>
+            @Html.Label("Image 3")
+            <input type="file" name="file3" id="file3">
+        </div>
+        <div>
+            @Html.Label("Price")
+            <input type="text" name="Price" id="Price" required="">
+        </div>
+        <div>
+            @Html.Label("Description")
+            <input type="text" name="Description" id="Description" required="">
+        </div>
+        <div>
+            @Html.Label("Category")
+            @Html.DropDownList("List")
+        </div>
+        <div>
+            @Html.Label("Quantity")
+            <input type="text" name="Quantity" id="Quantity" required="">
+        </div>
+            <div>
+        </div>          
+        <input type="submit" value="Add" />
+    </form>
+</div>
+<!--
+<script  type="text/javascript">
+    $(document).ready(function () {
+        $("#Catagory").click(function () {
+            $.getJSON("/Admin/Option", function (data) {
+                $.each(data, function (i, item) {
+                    $("#Catagory").append('<option value='+item+'>'+item+'</option>');
+                })
+            })
+        })
+    });
+</script>-->

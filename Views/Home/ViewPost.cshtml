@@ -1,0 +1,81 @@
+﻿@model List<OnlineShoping.Models.Post>
+
+
+@{
+    ViewBag.Title = "View Post";
+}
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="~/Home/Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Post</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- single -->
+	<div class="single">
+		<div class="container">
+			<div class="col-md-4 products-left">
+				<div class="filter-price animated wow slideInUp" data-wow-delay=".5s">
+					<ul class="dropdown-menu1">
+							<li><a href="">								               
+							<div id="slider-range"></div>							
+							<input type="text" id="amount" style="border: 0" />
+							</a></li>	
+					</ul>
+						<script type='text/javascript'>//<![CDATA[ 
+						    $(window).load(function () {
+						        $("#slider-range").slider({
+						            range: true,
+						            min: 0,
+						            max: 100000,
+						            values: [10000, 60000],
+						            slide: function (event, ui) {
+						                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+						            }
+						        });
+						        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+
+						    });//]]>
+						</script>
+						<script type="text/javascript" src="~/Home/js/jquery-ui.min.js"></script>
+					 <!---->
+				</div>
+			</div>
+            @{
+                foreach(var x in Model)
+                {
+            
+			<div class="col-md-8 single-right">
+				<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
+					<div class="flexslider">
+						<ul class="slides">
+							<li data-thumb="@x.Image">
+								<div class="thumb-image"> <img src="@x.Image" data-imagezoom="true" class="img-responsive"> </div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
+					<h4><span class="item_price">$@x.Price</span></h4>
+                    <h4><span class="item_price">@x.Contact</span></h4>
+					<div class="description">
+						<h5><i>Description</i></h5>
+						<p>@x.Description</p>
+					</div>
+				</div>
+
+			</div>
+                }
+            }
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //single -->
+
+<!-- zooming-effect -->
+	<script src="~/Assets/js/imagezoom.js"></script>
+<!-- //zooming-effect -->

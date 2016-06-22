@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "DeleteItem";
+}
+
+@model List<OnlineShoping.Models.Item>
+
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Image1</th>
+        <th>Image2</th>
+        <th>Image3</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Delete</th>
+    </tr>
+
+    @{
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Image1</td>
+                <td>@item.Image2</td>
+                <td>@item.Image3</td>
+                <td>@item.Price</td>
+                <td>@item.Description</td>
+                <td>@item.Category</td>
+
+                <td><a href="~/Admin/Delete/@item.Id">Delete</a></td>
+            </tr>
+        }
+    }
+</table>

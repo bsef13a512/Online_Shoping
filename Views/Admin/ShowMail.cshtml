@@ -1,0 +1,27 @@
+﻿@model List<OnlineShoping.Models.Mail>
+@{
+    ViewBag.Title = "ShowMail";
+}
+
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+    </tr>
+
+    @{
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Subject</td>
+                <td>@item.Message</td>
+            </tr>
+        }
+    }
+</table>

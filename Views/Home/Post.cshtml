@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Post";
+}
+<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">				
+    <form method="post" action="~/Home/Post1" enctype="multipart/form-data">
+        <div>
+            @Html.Label("Image")
+            <input type="file" name="file1" id="file1">
+        </div>
+        <div>
+            @Html.Label("Price")
+            <input type="text" name="Price" id="Price" required="">
+        </div>
+        <div>
+            @Html.Label("Description")
+            <input type="text" name="Description" id="Description" required="">
+        </div>
+        <div>
+            @Html.Label("Contact")
+            <input type="text" name="Contact" id="Contact" required="">
+        </div>
+            <div>
+        </div>          
+        <input type="submit" value="Add" />
+    </form>
+</div>

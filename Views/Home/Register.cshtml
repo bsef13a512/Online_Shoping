@@ -1,0 +1,112 @@
+﻿@model OnlineShoping.Models.User
+@{
+    ViewBag.Title = "Register";
+}
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="~/Home/Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Register Page</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+	<div class="register">
+		<div class="container">
+			<h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
+			<p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+				deserunt mollit anim id est laborum.</p>
+			<div class="login-form-grids">
+				<h5 class="animated wow slideInUp" data-wow-delay=".5s">profile information</h5>
+                <div class="animated wow slideInUp" data-wow-delay=".5s">
+
+                    @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                    <div>
+                            @Html.LabelFor(model => model.FirstName)
+                            @Html.EditorFor(model => model.FirstName)
+                            @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                    <div>
+                            @Html.LabelFor(model => model.LastName)
+                            @Html.EditorFor(model => model.LastName)
+                            @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                    <h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>
+                    <div>
+                            @Html.LabelFor(model => model.Email)
+                            @Html.EditorFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                    <div>
+                            @Html.LabelFor(model => model.UserName)
+                            @Html.EditorFor(model => model.UserName)
+                            @Html.ValidationMessageFor(model => model.UserName)
+                            <div style="color:red" id="invalid"></div>
+                    </div>
+                    <div>
+                            @Html.LabelFor(model => model.Password)
+                            @Html.PasswordFor(model => model.Password)
+                            @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                    <div>
+                            @Html.LabelFor(model => model.Question)
+                            @Html.EditorFor(model => model.Question)
+                            @Html.ValidationMessageFor(model => model.Question)
+                    </div>
+                    <div>
+                            @Html.LabelFor(model => model.Answer)
+                            @Html.EditorFor(model => model.Answer)
+                            @Html.ValidationMessageFor(model => model.Answer)
+                    </div>
+                    <div>
+                            <input type="file" name="Picture" id="Picture">
+                    </div>
+                        <input type="submit" value="Create" />
+                    }
+<!--				<form class="animated wow slideInUp" data-wow-delay=".5s" method="post" action="~/Home/RegisterAdd" enctype="multipart/form-data">
+					<input type="text" placeholder="First Name..." requ ired=" " name="FirstName">
+					<input type="text" placeholder="Last Name..." required=" " name="LastName">
+				
+				<h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>
+					<input type="email" placeholder="Email Address" required=" " name="Email">
+                    <input type="text" placeholder="User Name" required=" " name="UserName" id="UserName">
+                    <div id="invalid"></div>
+					<input type="password" placeholder="Password" required=" " name="Password">
+					<input type="password" placeholder="Password Confirmation" required=" " name="ConfirmPassword">
+                    <input type="text" value="" name="Question">
+                    <input type="text" placeholder="Answer" required=" " name="Answer">
+                    <input type="file" name="Profile" />
+
+					<div class="register-check-box">
+						<div class="check">
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
+						</div>
+					</div>
+					<input type="submit" value="Register">
+				</form>
+-->             </div>
+			</div>
+			<div class="register-home animated wow slideInUp" data-wow-delay=".5s">
+				<a href="~/Home/Index">Home</a>
+			</div>
+		</div>
+	</div>
+
+<!-- //register -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#UserName").mouseleave(function () {
+            var us = $("#UserName").val();
+            $.getJSON("/Home/CheckUserName?UserName=" + us, function (data) {
+                if (data)
+                    $("#invalid").text(" ");
+                else
+                    $("#invalid").text("User Already Present");
+            });
+        });
+    });
+</script>
